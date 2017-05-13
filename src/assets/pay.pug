@@ -7,25 +7,14 @@ block content
     #app
       .wd-nav-area-bg
             ul.wd-nav-area
-                - var navlist=[{id:'category',name:'全部分类'},{id:'111',name:'首页'},{id:'food',name:'美食'}];
+                - var navlist=[{id:'category',name:'确认订单',selected:false},{id:'111',name:'支付方式',selected:true}];
                 each item,index in navlist
-                    if index==0
-                        li.all-category
-                            a.allcat #{item.name}
-                            dl.menuList(style="display:none;")
-                                block menulist
-                                    dd
-                                        a.mainTitle 美食
-                                        p 
-                                            a 精选品牌
-                                            a 小吃快餐
-                                block menulist
-                                block menulist
-                                block menulist
-                                block menulist
+                    if index==1
+                        li.nav-color-selected
+                            a(href='\#',style='color:#fff;') #{item.name}
                     else 
                         li
-                            a(href='\##{item.id}') #{item.name}
+                            a(href='\#') #{item.name}
       #header
         .hd
           .container
@@ -88,10 +77,7 @@ block content
             |     				
             .payment-submit
               a.btn(@click="gotoPay") 去付款
-            |     				
-            .payment-back
-              a 返回修改订单
-      |     	
+            |     				 	
       #footer
     |     
     #modal
