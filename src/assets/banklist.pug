@@ -1,0 +1,55 @@
+extends personCenter
+block centerContent
+    #app
+        form#bankFormWrapper.layui-form(action="", style="display: none;font-size: 12px;padding:20px 10px;")
+            .layui-form-item
+                label.layui-form-label 银行卡号
+                |                 
+                .layui-input-inline
+                    input.layui-input(type="text", name="card_num", required="", lay-verify="number", placeholder="请输入银行卡号", autocomplete="off")
+            |               
+            .layui-form-item
+                label.layui-form-label 银行
+                |                 
+                .layui-input-inline
+                    select.bankListWrapper(name="card_type", lay-verify="required")
+                        option
+            |               
+            .layui-form-item
+                .layui-input-block
+                    .layui-btn(lay-submit="", lay-filter="addBank") 立即提交
+            |           
+        form#userInfoAuthor.layui-form(action="", style="display: none;font-size: 12px;padding:20px 10px;")
+            .layui-form-item
+                label.layui-form-label 真实姓名
+                |                 
+                .layui-input-inline
+                    input.layui-input(type="text", name="real_name", required="", lay-verify="required", placeholder="请输入标题", autocomplete="off")
+            |               
+            .layui-form-item
+                label.layui-form-label 身份证号
+                |                 
+                .layui-input-inline
+                    input.layui-input(type="text", name="id_card", required="", lay-verify="identity", placeholder="请输入标题", autocomplete="off")
+            |               
+            .layui-form-item
+                .layui-input-block
+                    .layui-btn(lay-submit="", lay-filter="addAuthor") 立即提交
+        .my-record-wrapper
+            h3.my-title
+                span 我的银行卡
+                .btn-small-click(@click="addBankList") 添加银行卡
+                .btn-small-click(style="display:none;",v-show="!authorStatus",@click="addAuthorList") 实名认证
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w10 序号
+                        li.th.w30 银行卡号
+                        li.th.w30 开户行
+                        li.th.w30 创建时间
+                    ul.tr-td.clearfix(v-for="(item,index) in queueList")
+                        li.th.w10(v-text="index+1")
+                        li.th.w30(v-text="item.card_num")
+                        li.th.w30(v-text="item.card_tip")
+                        li.th.w30(v-text="item.create_time")
+                

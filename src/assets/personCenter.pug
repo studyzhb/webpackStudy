@@ -1,0 +1,38 @@
+extends header
+block content
+    .perWrap
+        .perInfo.clearfix
+            .perLeft
+                dl.listNav
+                    dt(style="cursor:pointer;")
+                        a(href="myAccount.html")
+                            span 
+                            | 个人主页
+                    dd
+                        dl
+                            dt
+                                span
+                                | 队列模式
+                            dd 
+                                a(href="discountOrder.html") 队列管理
+                    dd
+                        dl
+                            dt
+                                span
+                                | 我的记录
+                            dd 
+                                a(href="backBuylist.html") 回购记录
+                            dd 
+                                a(href="convertlist.html") 兑换记录
+                            dd 
+                                a(href="obligationlist.html") 我的债权历史
+                            dd 
+                                a(href="obligationlisting.html") 正在进行中的债权
+                    dd
+                        dl
+                            dt
+                                a(href="banklist.html") 
+                                    span
+                                    | 我的银行卡
+            .perRight.clearfix(style='height:auto;')
+                block centerContent

@@ -1,0 +1,25 @@
+extends personCenter
+block centerContent
+    #app
+        .my-record-wrapper
+            h3.my-title
+                span 回购记录
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w10 序号
+                        li.th.w20 商品包
+                        li.th.w20 金额
+                        li.th.w20 服务费
+                        li.th.w20 回购金额
+                        li.th.w10 状态
+                    ul.tr-td.clearfix(v-for="(item,index) in queueList")
+                        li.th.w10(v-text="index+1")
+                        li.th.w20(v-text="item.goods_name")
+                        li.th.w20(v-text="item.goods_price")
+                        li.th.w20(v-text="item.counter_fee")
+                        li.th.w20(v-text="item.buy_back_price")
+                        li.th.w10
+                            span(v-show="item.status==0") 回购申请中
+                            span(v-show="item.status==1") 回购完成
+                

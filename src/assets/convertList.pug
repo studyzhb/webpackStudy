@@ -1,0 +1,23 @@
+extends personCenter
+block centerContent
+    #app
+        .my-record-wrapper
+            h3.my-title
+                span 兑换记录
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w10 序号
+                        li.th.w20 订单
+                        li.th.w30 抵扣债券金额
+                        li.th.w20 兑换金额
+                        li.th.w20 状态
+                    ul.tr-td.clearfix(v-for="(item,index) in queueList")
+                        li.th.w10(v-text="index+1")
+                        li.th.w20(v-text="item.orders")
+                        li.th.w20(v-text="item.dikou")
+                        li.th.w20(v-text="item.total")
+                        li.th.w10
+                            span(v-show="item.status==0") 兑换中
+                            span(v-show="item.status==1") 兑换完成
+                

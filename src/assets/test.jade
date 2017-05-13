@@ -1,0 +1,21 @@
+footer
+            .foot-serve
+                .foot-serve-top.clearfix(style="display:none")
+                    .barcode
+                    - var serCon1=['购物指南','购物流程','购物指南']; 
+                    ul.serve
+                        each item in serCon1
+                            li #{item}
+                    ul.serve
+                        each item in serCon1
+                            li #{item}
+                    ul.serve
+                        each item in serCon1
+                            li #{item}
+                .foot-serve-bottom
+                    img(src='../img/footer.png')
+            .foot-about-bg
+                .foot-about   
+                    - var footInfo=['©2017 e+.RIGHT','ICP备案号：豫ICP备15016705号-4',''];
+                    each item in footInfo
+                        a #{item}   

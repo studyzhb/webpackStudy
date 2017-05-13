@@ -1,0 +1,100 @@
+.goods-wrapper-bg {
+  background: #fff;
+  border-bottom: 1px solid #e3e3e3; }
+
+ul.goods-wrapper {
+  height: 276px;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  width: 1280px;
+  margin: 0 auto; }
+  ul.goods-wrapper li {
+    display: inline-block;
+    height: 276px;
+    line-height: 276px;
+    vertical-align: top; }
+  ul.goods-wrapper li.bz {
+    width: 0;
+    height: 276px;
+    vertical-align: middle; }
+  ul.goods-wrapper li.order-name {
+    width: 258px;
+    text-align: center;
+    font-size: 18px;
+    color: #c70d1b; }
+  ul.goods-wrapper li.goodslist-wrapper {
+    width: 278px;
+    padding: 24px 0 0 70px;
+    background: #ebebeb; }
+    ul.goods-wrapper li.goodslist-wrapper dl.goodslist {
+      height: 70px;
+      margin-bottom: 10px; }
+      ul.goods-wrapper li.goodslist-wrapper dl.goodslist dt {
+        display: inline-block;
+        vertical-align: top;
+        width: 70px;
+        height: 70px;
+        overflow: hidden; }
+        ul.goods-wrapper li.goodslist-wrapper dl.goodslist dt img {
+          width: 100%;
+          height: 100%; }
+      ul.goods-wrapper li.goodslist-wrapper dl.goodslist dd {
+        display: inline-block;
+        vertical-align: top;
+        height: 70px;
+        text-align: center;
+        font-size: 16px;
+        color: #8c8c8c;
+        line-height: 70px; }
+  ul.goods-wrapper li.username {
+    width: 412px;
+    text-align: center;
+    font-size: 16px;
+    color: #000; }
+  ul.goods-wrapper li.handle-order {
+    padding: 94px 0 0 48px;
+    height: 182px;
+    text-align: left;
+    position: relative; }
+    ul.goods-wrapper li.handle-order span.color-red {
+      display: inline-block;
+      vertical-align: top;
+      color: #d74f59;
+      font-size: 20px;
+      height: 30px;
+      line-height: 30px; }
+  ul.goods-wrapper li.handle-pay {
+    width: 228px;
+    height: 214px;
+    background: #ebebeb;
+    padding-top: 58px;
+    padding-left: 30px; }
+    ul.goods-wrapper li.handle-pay p {
+      height: 40px;
+      font-size: 14px;
+      line-height: 40px;
+      color: #666; }
+    ul.goods-wrapper li.handle-pay .confirm-btn {
+      width: 176px;
+      height: 50px;
+      background: #c72d1b;
+      margin-left: 20px;
+      margin-top: 35px;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 50px;
+      color: #fff; }
+  ul.goods-wrapper .btn-small {
+    position: absolute;
+    cursor: pointer;
+    width: 114px;
+    height: 28px;
+    left: 36px;
+    bottom: 110px;
+    border-radius: 5px;
+    color: #fff;
+    background: #c70d1b;
+    text-align: center;
+    line-height: 28px; }
+
+/*# sourceMappingURL=order.css.map */

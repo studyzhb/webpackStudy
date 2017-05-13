@@ -1,0 +1,21 @@
+extends personCenter
+block centerContent
+    #app
+        .my-record-wrapper
+            h3.my-title
+                span 正在进行中的债权
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w10 序号
+                        li.th.w20 用户
+                        li.th.w30 认证金额
+                        li.th.w20 债权编号
+                        li.th.w20 债权单位
+                    ul.tr-td.clearfix(v-for="(item,index) in queueList")
+                        li.th.w10(v-text="index+1")
+                        li.th.w20(v-text="item.name")
+                        li.th.w20(v-text="item.debt_money")
+                        li.th.w20(v-text="item.debtcode")
+                        li.th.w10(v-text="item.debt_units")
+                

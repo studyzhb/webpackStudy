@@ -1,0 +1,41 @@
+.perWrap {
+  width: 1280px;
+  min-width: 1280px;
+  background: #eee;
+  margin: 0 auto;
+  font-size: 14px;
+  overflow: hidden; }
+  .perWrap .perLeft {
+    width: 287px;
+    padding-top: 40px;
+    float: left; }
+    .perWrap .perLeft .listNav {
+      padding-left: 94px; }
+      .perWrap .perLeft .listNav .circleImg {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #C70D1B;
+        position: absolute;
+        left: -15px;
+        top: 5px; }
+      .perWrap .perLeft .listNav dt {
+        position: relative;
+        cursor: pointer; }
+      .perWrap .perLeft .listNav dd dl {
+        margin-top: 40px; }
+        .perWrap .perLeft .listNav dd dl dd {
+          font-size: 12px;
+          color: #666;
+          margin-top: 16px;
+          cursor: pointer; }
+  .perWrap .perRight {
+    width: 992px;
+    background: #fff;
+    float: left; }
+
+.color {
+  color: #C70D1B; }
+
+/*# sourceMappingURL=personCenter.css.map */

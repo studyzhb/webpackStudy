@@ -1,0 +1,48 @@
+extends header
+block content
+    div#app
+        .wd-nav-area-bg
+            ul.wd-nav-area
+                - var navlist=[{id:'category',name:'全部分类'},{id:'111',name:'首页'},{id:'food',name:'美食'}];
+                each item,index in navlist
+                    if index==0
+                        li.all-category
+                            a.allcat #{item.name}
+                            dl.menuList(style="display:none;")
+                                block menulist
+                                    dd
+                                        a.mainTitle 美食
+                                        p 
+                                            a 精选品牌
+                                            a 小吃快餐
+                                block menulist
+                                block menulist
+                                block menulist
+                                block menulist
+                    else 
+                        li
+                            a(href='\##{item.id}') #{item.name}
+        .goods-wrapper-bg
+            ul.goods-wrapper
+                li.bz
+                li.order-name 订单结算
+                li.goodslist-wrapper 
+                    dl.goodslist
+                        dt
+                            img(src="./img/test.png")
+                        dd 商品名称
+                    dl.goodslist
+                        dt
+                            img(src="./img/test.png")
+                        dd 商品名称
+                    dl.goodslist
+                        dt
+                            img(src="./img/test.png")
+                        dd 商品名称
+                li.username(v-text="goodsDetai.name")  
+                    | 自取
+                li.handle-order 
+                    span.color-red $
+                    span.color-red(v-text="goodsDetai.total_amount")
+                    span.btn-small(@click="createOrder") 确认订单
+

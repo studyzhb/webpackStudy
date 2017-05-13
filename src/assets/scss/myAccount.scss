@@ -1,0 +1,97 @@
+@import 'common-table';
+.my-baseInfo-wrapper{
+    background:#fff;
+    .my-baseInfo-main{
+        padding:16px 14px 0;
+        .show-all-balance-area{
+            background: #ebebeb;
+            height: 86px;
+            padding-left:38px;
+            line-height: 86px;
+            span{
+               color:#8d8d8d;
+               font-size:22px;
+            }
+            em{
+                padding:0 30px;
+                color:#c72d1b;
+                font-size: 26px;
+            }
+        }
+        .handle-balance-area{
+            padding-left:86px;
+            height: 102px;
+            // text-align: center;
+            @at-root
+            .btn-big{
+                display: inline-block;
+                cursor:pointer;
+                border-radius: 5px;
+                margin-right: 58px;
+                width: 412px;
+                height: 48px;
+                border:1px solid #c72d1b;
+                color:#d51b32;
+                font-size: 18px;
+                line-height: 48px;
+                text-align: center;
+                vertical-align: middle;
+            }
+            
+            .btn-normal{
+                display: inline-block;
+                cursor:pointer;
+                font-size:22px;
+                height: 32px;
+                padding-left:38px;
+                position:relative;
+                color:#c72d1b;
+                margin-left:78px;
+                img{
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    width: 32px;
+                    height: 32px;
+                    overflow: hidden;
+                }
+            }
+            .biaozhi{
+                height: 102px;
+                width: 0;
+                vertical-align: middle;
+                display: inline-block;
+            }
+        }
+
+    }
+}
+
+.btn-small-click{
+    display: inline-block;
+    cursor:pointer;
+    border-radius: 5px;
+    margin-right: 58px;
+    margin-left: 20px;
+    width: 112px;
+    height: 30px;
+    border:1px solid #c72d1b;
+    color:#d51b32;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+.my-record-wrapper{
+    padding-top:34px;
+    background:#f8f8f8;
+    min-height: 500px;
+    h3.my-title{
+        height:50px;
+        line-height: 50px;
+        font-size:20px;
+        color:#666;
+        background:#ededed url('../img/record.png') no-repeat 34px 10px;
+        padding-left:72px;
+    }
+}

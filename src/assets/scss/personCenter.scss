@@ -1,0 +1,49 @@
+.perWrap{
+    width: 1280px;
+    min-width: 1280px;
+    background: #eee;
+    margin: 0 auto;
+    font-size: 14px;
+    overflow: hidden;
+    .perLeft{
+        width: 287px;
+        padding-top:40px;
+        float: left;
+        .listNav{
+            padding-left: 94px;
+            .circleImg{
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #C70D1B;
+                position: absolute;
+                left: -15px;
+                top: 5px;
+            }
+            dt{
+                position: relative;
+                cursor:pointer;
+            }
+            dd{
+                dl{
+                        margin-top: 40px;
+                    dd{
+                        font-size: 12px;
+                        color: #666;
+                        margin-top: 16px;
+                        cursor:pointer;
+                    }
+                }
+            }
+        }
+    }
+    .perRight{
+        width: 992px;
+        background: #fff;
+        float: left;
+    }
+}
+.color{
+    color:#C70D1B; 
+}

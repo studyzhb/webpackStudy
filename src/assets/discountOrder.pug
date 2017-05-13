@@ -1,0 +1,31 @@
+extends personCenter
+block centerContent
+    #app
+        .my-record-wrapper
+            h3.my-title
+                span 队列记录
+                a(href="javascript:top.location.href='../index.html'")
+                    .btn-small-click 再次购买
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w10 序号
+                        li.th.w20 订单号
+                        li.th.w30 订单创建时间
+                        li.th.w20 状态
+                        li.th.w20 操作
+                    ul.tr-td.clearfix(v-for="(userItem,index) in userQueueList")
+                        li.th.w10(v-text="index+1")
+                        li.th.w20(v-text="userItem.order_id")
+                        li.th.w20(v-text="userItem.create_time")
+                        li.th.w20
+                            span(style="cursor:pointer;display: inline-block;border:1px solid #f00;padding:5px;",v-show="userItem.status==2",@click="convertScore(userItem.id)",v-text="点击兑换")
+                            span(v-show="userItem.status==-1",v-text="违规踢出")
+                            span(v-show="userItem.status==1",v-text="收益中")
+                            span(v-show="userItem.status==3",v-text="兑换中")
+                            span(v-show="userItem.status==4",v-text="兑换完成")
+                        li.th.w10
+                            span(style="display: inline-block;padding:10px;border:1px solid #f00;cursor: pointer;",v-show="userItem.take_delivery==0||userItem.take_delivery==1",@click="backGoods(userItem.order_id)",v-text="回购")
+                            span(v-show="userItem.take_delivery==2",v-text="提货完成")
+                            span(v-show="userItem.take_delivery==3",v-text="回购中")
+                

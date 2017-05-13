@@ -1,0 +1,57 @@
+extends personCenter
+block centerContent
+    #app
+        form#bankFormWrapper.layui-form(action="", style="display: none;font-size: 12px;padding:0 10px;")
+            .layui-form-item
+                label.layui-form-label 提现金额
+                |                 
+                .layui-input-block
+                input.layui-input(type="text", name="money", required="", lay-verify="number", placeholder="请输入标题", autocomplete="off")
+            |               
+            .layui-form-item
+                label.layui-form-label 银行卡
+                |                 
+                .layui-input-block
+                select.bankListWrapper(name="card_id", lay-verify="required")
+                    option
+            |               
+            .layui-form-item
+                label.layui-form-label 支付密码
+                |                 
+                .layui-input-block
+                input.layui-input(type="password", name="pay_pwd", required="", lay-verify="number", placeholder="请输入标题", autocomplete="off")
+            |               
+            .layui-form-item
+                .layui-input-block
+                .layui-btn(lay-submit="", lay-filter="addBank") 立即提交
+        .my-baseInfo-wrapper
+            .my-baseInfo-main
+                .show-all-balance-area
+                    span 当前积分:
+                    em(v-text="userOrderArr.queue_income||0") 
+                    span 当前余额:
+                    em(v-text="userOrderArr.balance||0")
+                .handle-balance-area
+                    .biaozhi
+                    .btn-big(@click="obligation2Balance") 点击债权金转余额
+                    .btn-normal(@click="outputMoney(userOrderArr)")
+                        img(src="../img/output.png")
+                        | 提现
+                    .btn-normal(@click="rechargeMoney")
+                        img(src="../img/input.png")
+                        | 充值
+        .my-record-wrapper
+            h3.my-title
+                span 我的记录
+            .table-wrapper
+                .offcial-table
+                    ul.tr-th.clearfix
+                        li.th.w20 单号
+                        li.th.w40 交易信息
+                        li.th.w20 时间
+                        li.th.w20 金额
+                    ul.tr-td.clearfix(v-for="item in queueList")
+                        li.th.w20(v-text="item.order_sn")
+                        li.th.w40(v-text="item.note")
+                        li.th.w20(v-text="item.create_time")
+                        li.th.w20(v-text="item.amount")

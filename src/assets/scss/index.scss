@@ -1,0 +1,73 @@
+.obligation-goods-bg{
+    background: #FFF;
+    padding-top:25px;
+    .obligation-goods-wrapper{
+        width: 1250px;
+        margin: 0 auto;
+        padding-left:30px;
+        ul.single-goods-wrapper{
+            border:1px solid #e3e3e3;
+            height: 202px;
+            width:1222px;
+            margin-bottom:20px;
+            li{
+                display: inline-block;
+                text-align: center;
+                vertical-align: top;
+                a{
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 192px;
+                    height: 202px;
+                    span.bz{
+                        display: inline-block;
+                        width: 0;
+                        height: 202px;
+                        vertical-align: middle;
+                    }
+                }
+                a.ltimg{
+                    text-align: left;
+                    width: 162px;
+                    
+                }
+                img{
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                p{
+                    width:100%;
+                    font-size: 16px;
+                    color:#818181;
+                    height: 52px;
+                    line-height: 52px;
+                }
+            }
+            li.baseInfo{
+                padding-top:24px;
+                text-align: left;
+                .left-money-show{
+                    display: inline-block;
+                    color:#c70d1b;
+                    font-size:14px;
+                    height: 28px;
+                    line-height: 28px;
+                }
+                .btn-buy{
+                    display: inline-block;
+                    width: 114px;
+                    cursor:pointer;
+                    text-align: center;
+                    height: 28px;
+                    line-height: 28px;
+                    font-size: 14px;
+                    background: #c70d1b;
+                    color:#fff;
+                    border-radius: 5px;
+                    margin-left:126px;
+                    margin-top:10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,138 @@
+.dialog {
+  /*display: none;*/
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-size: 14px; }
+
+.dialog-info {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #000;
+  opacity: 0.5;
+  -moz-opacity: 0.5;
+  z-index: 9; }
+
+.dia-content {
+  width: 520px;
+  height: 530px;
+  background: #fff;
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -260px;
+  margin-top: -265px;
+  border-radius: 5px; }
+  .dia-content .diaTop {
+    float: right;
+    margin: 10px;
+    cursor: pointer; }
+  .dia-content .diaLogo {
+    text-align: center;
+    margin: 35px 0px; }
+  .dia-content ul li {
+    text-align: center;
+    margin-top: 20px; }
+    .dia-content ul li input {
+      width: 270px;
+      height: 40px;
+      border: 1px solid #dad8d8;
+      text-indent: 20px;
+      color: #333; }
+    .dia-content ul li .reset, .dia-content ul li .submit {
+      display: inline-block;
+      width: 270px;
+      height: 40px;
+      background: #C70E1C;
+      color: #fff;
+      border: none;
+      line-height: 40px;
+      cursor: pointer; }
+    .dia-content ul li .dialogin {
+      margin-left: 158px; }
+    .dia-content ul li em {
+      display: inline-block;
+      height: 1px;
+      width: 40px;
+      background: #dad8d8;
+      position: relative;
+      bottom: 3px; }
+    .dia-content ul li .otherSign {
+      font-size: 16px;
+      color: #dad8d8;
+      margin: 0px 20px;
+      margin-top: 5px; }
+    .dia-content ul li img {
+      margin: 0px 20px; }
+
+.color {
+  color: #C70E1C;
+  cursor: pointer; }
+
+#checkText {
+  width: 113px; }
+
+.checkCode {
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  background: #666;
+  position: relative;
+  top: 9px;
+  margin: 0px 5px;
+  cursor: pointer; }
+
+.sign-check .notsee {
+  /*color: #EEEEEE;*/
+  cursor: pointer;
+  font-size: 12px; }
+
+.phone-check {
+  position: relative; }
+  .phone-check .checkbtn {
+    width: 100px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #EEEEEE;
+    font-size: 12px;
+    position: absolute;
+    top: 0px;
+    right: 124px;
+    border: none;
+    display: inline-block;
+    cursor: pointer; }
+
+.checkagree {
+  text-align: center;
+  position: relative;
+  top: 10px;
+  right: 26px; }
+
+.agree {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  text-align: center;
+  line-height: 16px; }
+
+.file {
+  font-size: 12px;
+  margin-left: 5px; }
+  .file .sign-file {
+    color: blue; }
+
+/*# sourceMappingURL=sign.css.map */
+
+.dia-content ul li input.validate-color{
+  border:1px solid #f00;
+}
