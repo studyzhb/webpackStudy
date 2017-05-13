@@ -35,7 +35,7 @@ html
                                 li.sign-check(style="padding-left: 124px;text-align: left")
                                     input#checkText(type='text',v-model="loginUser.code",:class="{'validate-color':!validatorLoginUser.code}",@blur="validatorLoginUser.code=/^\\S+/.test(loginUser.code)",placeholder="验证码")
                                     span.checkCode(style="background:none;")
-                                        img(:src="picCode",style="width:100%,height:100%",@click='updatePicCode')
+                                        img(style="width:100%,height:100%",@click='updatePicCode',:src="picCode")
                                     span.notesee(@click='updatePicCode') 看不清楚，换一张
                                     span(v-show="!validatorLoginUser.code&&isShowError",style="color: #f00;") 验证码不能为空
                                 li
