@@ -17,15 +17,15 @@ block centerContent
                     ul.tr-td.clearfix(v-for="(userItem,index) in userQueueList")
                         li.th.w10(v-text="index+1")
                         li.th.w20(v-text="userItem.order_id")
-                        li.th.w20(v-text="userItem.create_time")
+                        li.th.w30(v-text="userItem.create_time")
                         li.th.w20
-                            span(style="cursor:pointer;display: inline-block;border:1px solid #f00;padding:5px;",v-show="userItem.status==2",@click="convertScore(userItem.id)",v-text="点击兑换")
-                            span(v-show="userItem.status==-1",v-text="违规踢出")
-                            span(v-show="userItem.status==1",v-text="收益中")
-                            span(v-show="userItem.status==3",v-text="兑换中")
-                            span(v-show="userItem.status==4",v-text="兑换完成")
-                        li.th.w10
-                            span(style="display: inline-block;padding:10px;border:1px solid #f00;cursor: pointer;",v-show="userItem.take_delivery==0||userItem.take_delivery==1",@click="backGoods(userItem.order_id)",v-text="回购")
-                            span(v-show="userItem.take_delivery==2",v-text="提货完成")
-                            span(v-show="userItem.take_delivery==3",v-text="回购中")
+                            span(style="cursor:pointer;display: inline-block;border:1px solid #f00;padding:5px;line-height:10px;",v-show="userItem.status==2",@click="convertScore(userItem.id)") 点击兑换
+                            span(v-show="userItem.status==-1") 违规踢出
+                            span(v-show="userItem.status==1") 收益中
+                            span(v-show="userItem.status==3") 兑换中
+                            span(v-show="userItem.status==4") 兑换完成
+                        li.th.w20
+                            span(style="display: inline-block;padding:10px;border:1px solid #f00;cursor: pointer;line-height:10px;",v-show="userItem.take_delivery==0||userItem.take_delivery==1",@click="backGoods(userItem.order_id)") 回购
+                            span(v-show="userItem.take_delivery==2") 提货完成
+                            span(v-show="userItem.take_delivery==3") 回购中
                 

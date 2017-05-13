@@ -3,7 +3,7 @@ block content
     div#app
         .wd-nav-area-bg
             ul.wd-nav-area
-                - var navlist=[{id:'category',name:'全部分类'},{id:'111',name:'首页'},{id:'food',name:'美食'}];
+                - var navlist=[{id:'category',name:'全部'},{id:'111',name:'商品'},{id:'food',name:'购物卡'}];
                 each item,index in navlist
                     if index==0
                         li.all-category
@@ -15,10 +15,6 @@ block content
                                         p 
                                             a 精选品牌
                                             a 小吃快餐
-                                block menulist
-                                block menulist
-                                block menulist
-                                block menulist
                     else 
                         li
                             a(href='\##{item.id}') #{item.name}
@@ -29,6 +25,7 @@ block content
                         a(v-for="(proItem,index) in mainItem.typeGoods",v-if="index<4")
                             img(:src="proItem.goods_logo",style="width:100px;height:100px;overflow:hidden;")
                             span.bz
+                        a(v-for="i in 4-mainItem.typeGoods.length")
                         a.ltimg
                             img(src="../img/lt.png")
                             span.bz
@@ -40,7 +37,6 @@ block content
                             span(v-text='mainItem.total_amount') 
                         .btn-buy(@click='goToGoodsDetail(mainItem.id)') 购买 
                 
-
                 
                     
 

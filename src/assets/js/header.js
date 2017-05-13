@@ -92,6 +92,18 @@ var vm=new Vue({
 			conPassword:'',
 			code:''
 		},
+		validatorApprove:{
+			name:false,
+			tel:false,
+			money:false,
+			debtcode:false
+		},
+		approveInfo:{
+			name:'',
+			tel:'',
+			money:'',
+			debtcode:''
+		},
 		//搜索 //true加载商品,false加载店铺
 		searchTag:true,
 		searchKeys:'',
@@ -161,7 +173,7 @@ var vm=new Vue({
 							self.isShowError=false;
 							self.loginUserName=res.body.data||'***';
 							cookieUtil.setExpiresDate('wdusername',self.loginUserName,1/96);
-							for(var key in this.loginUser){
+							for(var key in self.loginUser){
 								self.loginUser[key]='';
 							}
 							layer.msg(res.body.msg);
@@ -198,7 +210,7 @@ var vm=new Vue({
 						self.isShowError=false;
 						self.loginIndex='-1';
 						layer.msg(res.body.msg);
-						for(var key in this.resetUser){
+						for(var key in self.resetUser){
 								self.resetUser[key]='';
 							}
 					}else{
@@ -242,7 +254,7 @@ var vm=new Vue({
 							layer.msg('恭喜你注册成功，请登录。');
 							self.isShowError=false;
 							self.loginIndex='0';
-							for(var key in this.registerUser){
+							for(var key in self.registerUser){
 								self.registerUser[key]='';
 							}
 						}else{
@@ -393,33 +405,6 @@ var vm=new Vue({
 			
 			return goToWhere+value.id+'&cityid='+this.cityObj.id+'&name='+escape(value.name);
         },
-		getCityName:function(){
-			
-			var cName=cookieUtil.getCookie('cName');
-			var cId=cookieUtil.getCookie('cId');
-			if(!cId){
-				//获取城市
-			this.$http.get(ajaxAddress.preFix+ajaxAddress.common.getCity)
-					.then(function(res){
-						
-							self.cityArr=res.body||[];
-							res.body.forEach(function(item){
-								if(item.status==true){
-									cookieUtil.setExpiresDate('cName',item.name,1/96);
-									cookieUtil.setExpiresDate('cId',item.id,1/96);
-									self.cityObj=item;
-								}
-							})
-							
-						
-					})
-			}else{
-				this.cityObj={
-					id:cId,
-					name:cName
-				}
-			}
-		},
 		getUserInfo:function(){
 			var userName=cookieUtil.getCookie('wdusername');
 			if(userName){
@@ -533,6 +518,7 @@ var vm=new Vue({
 							layer.msg('认证审核中....请耐心等待')
 						}
 						else{
+							
 							self.loginIndex=5;
 						}
 						
@@ -543,6 +529,43 @@ var vm=new Vue({
 					
 					
 				});
+		},
+		//认证提交
+		approveMoney:function(){
+			this.isShowError=true;
+			var tag=true;
+            layer.load();
+			console.log(this.validatorApprove);
+			for(var key in this.validatorApprove){
+				if(!this.validatorApprove[key]){
+					tag=false;
+					layer.msg('请填写完整内容');
+				}
+			}
+			if(tag){
+				var body=this.approveInfo;
+				var self=this;
+                
+				this.$http.post(ajaxAddress.preFix+ajaxAddress.obligation.approve,body)
+					.then(function(res){
+						
+						if(res.body.code==200){
+	
+							self.loginIndex='-1';
+							self.isShowError=false;
+							
+							for(var key in self.approveInfo){
+								self.approveInfo[key]='';
+							}
+							layer.closeAll('loading');
+							layer.msg(res.body.msg);
+						}else{
+							layer.closeAll('loading');
+							layer.msg(res.body.msg);
+						}
+			
+					})
+			}
 		},
 		active:function(){
 			var self=this;

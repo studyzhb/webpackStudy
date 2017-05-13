@@ -65,5 +65,8 @@ module.exports={
         backGoodsHis:'/bondpc/backList',
         exchangelist:'/bondpc/exchangeList',
         balancePay:"/pay/yuezhifu"
+    },
+    obligation:{
+        approve:'/bondpc/authentication'
     }
 }

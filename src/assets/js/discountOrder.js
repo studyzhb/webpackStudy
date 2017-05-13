@@ -1,6 +1,8 @@
 require('../scss/myAccount.scss');
-require('../scss/personCenter.scss');
+
 require('./header.js');
+require('./personCenter.js');
+
 import Vue from 'vue/dist/vue.common.js'
 import VueResource from 'vue-resource/dist/vue-resource.common.js';
 // import './vue-resource.min.js'
@@ -192,9 +194,9 @@ new Vue({
                     
                     if(res.body.code==200){
                         self.getQueueList();
-                        layer.msg(res.body.msg);
+                        layer.msg(res.body.message);
                     }else{
-                        layer.msg(res.body.msg);
+                        layer.msg(res.body.message);
                     }
         
                 })

@@ -1,6 +1,6 @@
 require('../scss/myAccount.scss');
-require('../scss/personCenter.scss');
 require('./header.js');
+require('./personCenter.js');
 import Vue from 'vue/dist/vue.common.js'
 import VueResource from 'vue-resource/dist/vue-resource.common.js';
 // import './vue-resource.min.js'
