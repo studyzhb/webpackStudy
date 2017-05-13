@@ -31,8 +31,6 @@ new Vue({
     methods:{
         renderView:function(){
             this.goodsId=paraObj.id;
-            console.log(paraObj)
-            console.log(this.goodsId);
             this.getGoodsInfo();
             // this.getAddressInfo();
             this.getObligationId();
@@ -76,8 +74,15 @@ new Vue({
                     .then(function(res){
                         if(res.body.code==200){
                             self.obligationObj=res.body.data[0];
-                            
-                        }else{
+                        }else if(res.body.code==402){
+                            layer.msg('请先登录');
+                            cookieUtil.removeCookie('wdusername');
+                            setTimeout(function(){
+                                open('index.html','_self');
+                            },1000);
+                        }
+                        else{
+
                             self.obligationObj={};
                         }
                     })
@@ -147,7 +152,8 @@ new Vue({
                             },500);  
                         }
 					}else{
-                        
+                        layer.msg('请先登录');
+                        cookieUtil.removeCookie('wdusername');
                         setTimeout(function(){
                             open('index.html','_self');
                         },1000);

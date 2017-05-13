@@ -56,7 +56,7 @@ new Vue({
 						cookieUtil.removeCookie('wdusername');
 						layer.msg('请先登录');
                         setTimeout(function(){
-                            open('index.html')
+                            open('index.html',"_self");
                         },1000);
 					}
 					
