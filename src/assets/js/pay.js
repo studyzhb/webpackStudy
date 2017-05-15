@@ -33,10 +33,11 @@ new Vue({
         renderView:function(){
             this.goodsId=paraObj.id;
             this.isHasBand();  
-            // this.getGoodsInfo();
+            this.getGoodsInfo();
             // this.getAddressInfo();
             // this.getObligationId();
         },
+        //获取商品包信息
         getGoodsInfo:function(){
 
             var self=this;

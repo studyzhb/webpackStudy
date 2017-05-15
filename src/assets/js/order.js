@@ -127,7 +127,7 @@ new Vue({
                                         var orderId=res.body.data.order_id;
                                         
                                         // self.getPayHtml(orderId);
-                                        open('../html/pay.html?order_id='+orderId,"_self");
+                                        open('../html/pay.html?order_id='+orderId+'&id='+this.goodsId,"_self");
 
                                         }else if(res.body.code==302){
                                             cookieUtil.removeCookie('wdusername');
