@@ -1,5 +1,5 @@
 doctype html
-html
+html(style="height:100%;overflow:hidden;")
     head
         meta(charset='utf-8')
         link(href='../css/reset.css',rel='stylesheet')
@@ -7,7 +7,7 @@ html
         link(href='../css/sign.css',rel='stylesheet')
         link(href='../common/layui/css/layui.css',rel='stylesheet')
         link(href='../iconfont/iconfont.css',rel='stylesheet')
-    body
+    body(style="padding-bottom:170px;")
         .container-head#headerApp
             .dialog#dialogLogin(style='display:none;',v-show="loginIndex=='5'")
                 .dialog-info
@@ -153,7 +153,7 @@ html
         script(src="../layer/layer.js",type="text/javascript")
         script(src="../js/MD5.js",type="text/javascript")
         script(src="../common/layui/layui.js",type="text/javascript")
-        footer(style="display:none;")
+        footer(style="position:absolute;left:0;bottom:0;width:100%;")
             .foot-serve
                 .foot-serve-top.clearfix(style="display:none")
                     .barcode
