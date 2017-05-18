@@ -30,7 +30,13 @@ new Vue({
         tabIndex:'0',
         userOrderFilterArr:[],
         goodsValidCode:'',
-        userBankList:[]
+        userBankList:[],
+        currentPage:1,
+        //总页数
+		pageCount:1,
+        showItem:5,
+		//每页个数
+		pageSize:6
     },
     filters:{
         json2single:function(value){
@@ -48,6 +54,30 @@ new Vue({
     
         })
 
+    },
+    computed:{
+        pages:function(){
+            var pag = [];
+            if( this.currentPage < this.showItem ){ //如果当前的激活的项 小于要显示的条数
+                //总页数和要显示的条数那个大就显示多少条
+                var i = Math.min(this.showItem,this.pageCount);
+                
+                while(i){
+                    pag.unshift(i--);
+                }
+            }else{ //当前页数大于显示页数了
+                var middle = this.currentPage - Math.floor(this.showItem / 2 ),//从哪里开始
+                    i = this.showItem;
+                if( middle >  (this.pageCount - this.showItem)  ){
+                    middle = (this.pageCount - this.showItem) + 1
+                }
+                while(i--){
+                    pag.push( middle++ );
+                }
+            }
+            
+            return pag
+        }
     },
     methods:{
         renderView:function(){
@@ -77,6 +107,20 @@ new Vue({
             })
 
         },
+        pageClick:function(n){
+			this.currentPage=n;
+			var obj={};
+			obj.page=n;
+			this.getQueueList(obj);
+		},
+        prePage:function(){
+			this.currentPage--;
+			this.pageClick(this.currentPage);
+		},
+		nextPage:function(){
+			this.currentPage++;
+			this.pageClick(this.currentPage);
+		},
         getUserBankList:function(){
             var self=this;
             this.$http.get(ajaxAddress.preFix+ajaxAddress.list.banklist)
@@ -88,18 +132,19 @@ new Vue({
                         }
                     })
         },
-        getQueueList:function(){
+        getQueueList:function(obj){
             var self=this;
-            this.$http.get(ajaxAddress.preFix+ajaxAddress.userData.userAccount)
+            this.$http.get(ajaxAddress.preFix+ajaxAddress.userData.userAccount,{params:obj||{}})
                     .then(function(res){
                         
                         if(res.body.code==200){
 
                             self.queueList=res.body.data.list.balance_list;
+                            self.pageCount=Math.ceil(res.body.data.list.total/res.body.data.list.per_page)||1;
+                            self.pageSize=res.body.data.list.per_page;
                             // self.handleData(res.body.data);   
                         }else{
                             self.queueList=[];
-                            
                         }
                     })
         },
@@ -159,6 +204,9 @@ new Vue({
                 
                 if(self.userBankList.length==0){
                     layer.msg('请先添加银行卡');
+                    setTimeout(function(){
+                        open('banklist.html','_self');
+                    },3000);
                     return;
                 }
 
@@ -175,7 +223,7 @@ new Vue({
                 form.render();
                 layer.open({
                     type:1,
-                    title:'余额提现,提示：如果没有设置支付密码，支付密码与登录密码相同或手机号后六位',
+                    title:'提示：如果没有设置支付密码，支付密码与登录密码或手机号后六位相同',
                     content: $('#bankFormWrapper'), //这里content是一个DOM
                     shade:[0.8,'#000'],
                     area:['600px','500px'],
@@ -223,7 +271,7 @@ new Vue({
 
                 layer.prompt({
                     formType: 0,
-                    value: '0',
+                    placeHolder:'请输入充值金额',
                     title: '请输入充值金额',
                 }, function(value, index, elem){
                     layer.load();

@@ -24,11 +24,11 @@ const config={
                 loader: "style-loader"
             }, {
                 loader: "css-loader", options: {
-                    sourceMap: true
+                    sourceMap: false
                 }
             }, {
                 loader: "sass-loader", options: {
-                    sourceMap: true
+                    sourceMap: false
                 }
             }]},
              {test: /\.(jade|pug)$/, use: 'pug-loader?'},
@@ -44,7 +44,7 @@ const config={
             minify:false
         }),
         new HtmlWebpackPlugin({
-            filename:'../html/myAccount.html',
+            filename:'../html/personCenter.html',
             template:'src/assets/myAccount.pug',
             title:'ceshi',
             chunks:['myAccount'],

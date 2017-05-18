@@ -146,7 +146,7 @@ new Vue({
 				});
         },
         gotoPay:function(){
-            layer.load();
+            // layer.load();
             var num=paraObj.order_id;
             var self=this;
             
@@ -160,6 +160,8 @@ new Vue({
                     
                     layer.close(index);
                      self.getBalancePay(num,value);
+                },function(){
+                    layer.closeAll();
                 });
                
             }else if(this.checkType==2){
@@ -174,6 +176,7 @@ new Vue({
             open(ajaxAddress.payHtml+'?id='+num,'_self');
         },
         getBalancePay:function(num,value){
+            layer.load();
             var body={
                 order_id:num,
                 password:value
@@ -182,9 +185,12 @@ new Vue({
                 .then(function(res){
                     if(res.body.code==200){
                         layer.msg('支付成功');
-                        open('index.html','_self');
+                        setTimeout(function(){
+                            open('personCenter.html','_self');
+                        },3000);
+                        
                     }else{
-                        layer.msg(res.body.message)
+                        layer.msg(res.body.message);
                         layer.closeAll('loading');
                     }
                 })

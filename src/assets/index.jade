@@ -3,7 +3,7 @@ block content
     div#app
         .wd-nav-area-bg
             ul.wd-nav-area
-                - var navlist=[{id:'category',name:'全部'},{id:'111',name:'商品'},{id:'food',name:'购物卡'}];
+                - var navlist=[{id:'category',name:'全部'}];
                 each item,index in navlist
                     if index==0
                         li.all-category
@@ -23,7 +23,7 @@ block content
                 ul.single-goods-wrapper(v-for="mainItem in navIdArr")
                     li
                         a(v-for="(proItem,index) in mainItem.typeGoods",v-if="index<4")
-                            img(:src="proItem.goods_logo",style="width:100px;height:100px;overflow:hidden;")
+                            img(:src="proItem.goods_logo",style="width:180px;height:180px;overflow:hidden;")
                             span.bz
                         a(v-for="i in 4-mainItem.typeGoods.length")
                         a.ltimg

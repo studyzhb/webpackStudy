@@ -1,5 +1,5 @@
 doctype html
-html(style="height:100%;overflow:hidden;")
+html(style="min-height:100%;overflow:auto;")
     head
         meta(charset='utf-8')
         link(href='../css/reset.css',rel='stylesheet')
@@ -7,7 +7,7 @@ html(style="height:100%;overflow:hidden;")
         link(href='../css/sign.css',rel='stylesheet')
         link(href='../common/layui/css/layui.css',rel='stylesheet')
         link(href='../iconfont/iconfont.css',rel='stylesheet')
-    body(style="padding-bottom:170px;")
+    body(style="padding-bottom:190px;position:relative;min-height:824px;")
         .container-head#headerApp
             .dialog#dialogLogin(style='display:none;',v-show="loginIndex=='5'")
                 .dialog-info
@@ -136,15 +136,14 @@ html(style="height:100%;overflow:hidden;")
                             li.wd-common-login(v-show="isLogin")
                              a(style="cursor: pointer;",@click="loginIndex='0'",v-text="loginUserName") 
                             li.wd-common-login(v-show="isLogin") ,欢迎您
-                             a(style="cursor: pointer;",@click="exit") 退出
-                        ul.right-menu-area
-                            li.wd-mye
-                                a(@click="gotoPersonCenter",style="cursor:pointer;") 个人中心
+                             a(style="cursor: pointer;margin-left:20px;",@click="exit") 退出
+                            li.wd-common-login(style="margin-left:30px;")
+                             a(@click="gotoPersonCenter",style="cursor:pointer;") 个人中心
                 .wd-logo-container
                     .logoImage
                         a(href="index.html")
                             img(src='../img/header/logo.png')
-                    .bar-code-view
+                    .bar-code-view(@click="showLinkCode")
                         img(src="../img/link-code.png")
                     .obligation-btn(style='cursor:pointer;',@click="gotoAuthorMoney")
                         img(src='../img/obligation.png')

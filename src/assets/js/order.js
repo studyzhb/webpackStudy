@@ -32,6 +32,7 @@ new Vue({
         renderView:function(){
             this.goodsId=paraObj.id;
             this.getGoodsInfo();
+            
             // this.getAddressInfo();
             this.getObligationId();
         },
@@ -45,18 +46,31 @@ new Vue({
 						res.body.data.forEach(function(item){
                             if(item.id==self.goodsId){
                                 self.goodsDetai=item;
+                                self.getRealeInfo(self.goodsDetai,item.id);
                             }
                         })
 					}
 				});
 
         },
+        getRealeInfo:function(obj,id){
+            var self=this;
+			this.$http.get(ajaxAddress.preFix+ajaxAddress.obligation.realeNum+'?queue='+id)
+				.then(function(res){
+					if(res.body.code==200){
+                        
+                        if(res.body.data){
+                            self.$set(obj,'realeNum',res.body.data);
+                        }
+                        
+					}
+				});
+        },
         getAddressInfo:function(){
             var self=this;
 			this.$http.get(ajaxAddress.preFix+ajaxAddress.list.getAddress)
 				.then(function(res){
 					if(res.body.code==200){
-                        
 						self.addressArr=res.body.data;
 					}else{
                         layer.msg('获取不到地址信息,请先登录');
@@ -99,6 +113,10 @@ new Vue({
 			this.$http.get(ajaxAddress.isHasBand)
 				.then(function(res){
 					if(res.body.code==200){
+                        if(self.goodsDetai.realeNum<1){
+                            layer.msg('当日库存不足，请明日继续！')
+                            return;
+                        }
                         if(res.body.data=='1'){
                             
                             // if(this.selected){

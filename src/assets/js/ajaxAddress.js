@@ -67,6 +67,7 @@ module.exports={
         balancePay:"/pay/yuezhifu"
     },
     obligation:{
-        approve:'/bondpc/authentication'
+        approve:'/bondpc/authentication',
+        realeNum:'/Bondpc/inventory'
     }
 }

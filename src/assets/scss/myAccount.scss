@@ -8,6 +8,12 @@
             height: 86px;
             padding-left:38px;
             line-height: 86px;
+            span,em{
+                display: inline-block;
+                height: 32px;
+                line-height: 32px;
+                vertical-align: middle;
+            }
             span{
                color:#8d8d8d;
                font-size:22px;
@@ -21,32 +27,38 @@
         .handle-balance-area{
             padding-left:86px;
             height: 102px;
+            
             // text-align: center;
             @at-root
             .btn-big{
                 display: inline-block;
                 cursor:pointer;
                 border-radius: 5px;
-                margin-right: 58px;
-                width: 412px;
-                height: 48px;
-                border:1px solid #c72d1b;
-                color:#d51b32;
+                // margin-right: 58px;
+                width: 126px;
+                height: 40px;
+                // border:1px solid #c72d1b;
+                color:#fff;
+                background: #C70D1B;
                 font-size: 18px;
-                line-height: 48px;
+                line-height: 40px;
                 text-align: center;
                 vertical-align: middle;
             }
-            
+            @at-root
             .btn-normal{
                 display: inline-block;
                 cursor:pointer;
-                font-size:22px;
+                font-size:16px;
+                width:58px;
                 height: 32px;
-                padding-left:38px;
+                line-height: 32px;
+                // vertical-align: middle;
+                // padding-left:38px;
                 position:relative;
-                color:#c72d1b;
-                margin-left:78px;
+                text-align: center;
+                color:#fff;
+                margin-left:20px;
                 img{
                     position:absolute;
                     left:0;
@@ -84,7 +96,7 @@
 }
 .my-record-wrapper{
     padding-top:34px;
-    background:#f8f8f8;
+    // background:#f8f8f8;
     min-height: 500px;
     h3.my-title{
         height:50px;

@@ -133,11 +133,28 @@ var vm=new Vue({
 	methods:{
 		gotoPersonCenter:function(){
 			if(this.isLogin){
-				open('myAccount.html','_self');
+				open('personCenter.html','_self');
 			}else{
 				layer.msg('请先登录');
 				this.loginIndex='0'
 			}
+		},
+		//显示二维码
+		showLinkCode:function(){
+			var json={
+				title:'请用手机扫描下载APP',
+				data:[
+					{
+						src:'../img/linkcode.png',
+						title:'请用手机扫描下载APP'
+					}
+				]
+			}
+			layer.photos({
+				photos:json,
+				anim:5,
+				area:['300px','300px']
+			})
 		},
 		$vaSubmit:function(){
 			

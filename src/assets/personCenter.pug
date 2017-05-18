@@ -1,11 +1,29 @@
 extends header
 block content
+    div
+        .wd-nav-area-bg
+            ul.wd-nav-area
+                - var navlist=[{id:'category',name:'全部'}];
+                each item,index in navlist
+                    if index==0
+                        li.all-category(style="width:287px;")
+                            a.allcat #{item.name}
+                            dl.menuList(style="display:none;")
+                                block menulist
+                                    dd
+                                        a.mainTitle 美食
+                                        p 
+                                            a 精选品牌
+                                            a 小吃快餐
+                    else 
+                        li
+                            a(href='#') #{item.name}
     .perWrap
         .perInfo.clearfix
             .perLeft#leftApp
                 dl.listNav
                     dt(style="cursor:pointer;")
-                        a(href="myAccount.html")
+                        a(href="personCenter.html")
                             span 
                             | 个人主页
                     dd
@@ -14,7 +32,7 @@ block content
                                 span
                                 | 队列模式
                             dd 
-                                a(href="discountOrder.html") 队列管理
+                                a(href="discountOrder.html") 循环消费
                     dd
                         dl
                             dt

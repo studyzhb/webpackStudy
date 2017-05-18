@@ -41,7 +41,7 @@ block content
             #bd.cf
                 form#deal-buy-form.common-form.form.J-wwwtracker-form.mt-component--booted(action="", method="post")
                     .table-section.summary-table
-                        table#yui_3_16_0_1_1491961516124_545.buy-table(cellspacing="0")
+                        table#yui_3_16_0_1_1491961516124_545.buy-table(cellspacing="0",style="font-size:16px;")
                             tbody#yui_3_16_0_1_1491961516124_544
                                 tr.order-table-head-row
                                     th.desc 商品
@@ -49,6 +49,7 @@ block content
                                     th.unit-price 单价
                                     |             
                                     th.amount 数量
+                                    th.amount 库存
                                     |             
                                     th.col-total 总价
                                     |         
@@ -66,7 +67,11 @@ block content
                                             // <button class="minus" type="button" @click="changeMoney(goodsInfo,-1)">-</button>
                                             input.f-text.J-quantity.J-cart-quantity(type="text", autocomplete="off", readonly="", maxlength="4", :value="1")
                                             // <button class="item plus" type="button" @click="changeMoney(goodsInfo,1)">+</button>
-                                    |             
+                                    |
+                                    td#yui_3_16_0_1_1491961516124_542.deal-component-quantity
+                                        #yui_3_16_0_1_1491961516124_66.component-dealbuy-quantity.mt-component--booted
+                                        .dealbuy-quantity
+                                            input.f-text.J-quantity.J-cart-quantity(type="text", autocomplete="off", readonly="", maxlength="4", :value="goodsDetai.realeNum",v-model="goodsDetai.realeNum")
                                     td.money.total.rightpadding.col-total
                                         | ¥
                                         span#J-deal-buy-total(v-text="goodsDetai.total_amount")
@@ -75,7 +80,7 @@ block content
                                 tr
                                     td
                                     |             
-                                    td.extra-fee.total-fee.rightpadding(colspan="3")
+                                    td.extra-fee.total-fee.rightpadding(colspan="4",style="text-align:right;")
                                         strong 应付金额
                                         | ：
                                         |                 
@@ -93,6 +98,6 @@ block content
                                 <option :value="addressItem.id" v-for="addressItem in addressArr" v-text="addressItem.address+addressItem.stand"></option>
                                 </select>
                                 </p>
-                        .form-submit
+                        .form-submit(style="text-align:right;")
                             input.btn.btn-large.btn-buy(type="button", @click="createOrder", name="buy", value="提交订单")
 
