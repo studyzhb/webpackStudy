@@ -108,7 +108,7 @@ new Vue({
                         if(res.body.code==200){
 
                             self.userQueueList=res.body.data.data;
-                            console.log(self.userQueueList);
+                            
                             // self.handleData(res.body.data);   
                         }else{
                             self.userQueueList=[];
@@ -288,11 +288,13 @@ new Vue({
                         .then(function(res){
                             
                             if(res.body.code==200){
-                                layer.closeAll();
-                                layer.msg(res.body.message);
+                                layer.closeAll('page');
+                                layer.closeAll('loading');
+                                self.authorStatus=true;
+                                layer.msg(res.body.message,{time:5000});
                             }else{
-                                layer.closeAll();
-                                layer.msg(res.body.message);
+                                layer.closeAll('loading');
+                                layer.msg(res.body.message,{time:5000});
                             }
                 
                         })

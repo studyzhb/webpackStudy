@@ -166,7 +166,7 @@ new Vue({
                         else{
                             layer.msg('请先认证');
                             setTimeout(function(){
-                                open('approve.html','_self');
+                                open('index.html','_self');
                             },500);  
                         }
 					}else{
