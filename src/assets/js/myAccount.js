@@ -292,6 +292,19 @@ new Vue({
 
 
             });
+        },
+        getMyRecommend:function(){
+            layer.open({
+                    type:1,
+                    title:'流水详情',
+                    content: $('#pay-detail-info'), //这里content是一个DOM
+                    shade:[0.8,'#000'],
+                    area:['600px','500px'],
+                    maxmin: true,
+                    end:function(){
+                        $('#pay-detail-info').hide();
+                    }
+                })
         }
     }
 })
