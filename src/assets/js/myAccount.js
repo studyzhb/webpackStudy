@@ -300,8 +300,6 @@ new Vue({
                     // })
 
                 });
-
-
             });
         },
         getMyRecommend:function(orderid){
