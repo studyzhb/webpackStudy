@@ -36,7 +36,9 @@ new Vue({
 		pageCount:1,
         showItem:5,
 		//每页个数
-		pageSize:6
+		pageSize:6,
+        //显示流水详细信息
+        orderObj:{}
     },
     filters:{
         json2single:function(value){
@@ -80,6 +82,12 @@ new Vue({
         }
     },
     methods:{
+        //解析时间
+        filterTime:function(value){
+            var str=new Date(value*1000).toLocaleDateString();
+            
+            return str;
+        },
         renderView:function(){
             var self=this;
             this.getUserAccountList();
@@ -268,8 +276,11 @@ new Vue({
             layui.use(['form','layer'], function(){
                 var layer = layui.layer;
                 var form=layui.form();
-                layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
-                /** 
+                // layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
+                //biaozhi
+                
+
+                //5.23
                 layer.prompt({
                     formType: 0,
                     placeHolder:'请输入充值金额',
@@ -288,15 +299,24 @@ new Vue({
                     //     }
                     // })
 
-                });*/
+                });
 
 
             });
         },
-        getMyRecommend:function(){
-            layer.open({
+        getMyRecommend:function(orderid){
+            var self=this;
+            if(orderid){
+                this.$http.get(ajaxAddress.preFix+ajaxAddress.lookupOrderInfo+'?order_sn='+orderid)
+                    .then(function(res){
+                        if(res.body.code==200){
+                            self.orderObj=res.body.data.list;
+                            
+                        }
+                    })
+                layer.open({
                     type:1,
-                    title:'流水详情',
+                    title:'详情',
                     content: $('#pay-detail-info'), //这里content是一个DOM
                     shade:[0.8,'#000'],
                     area:['600px','500px'],
@@ -305,6 +325,8 @@ new Vue({
                         $('#pay-detail-info').hide();
                     }
                 })
+            }
+            
         }
     }
 })

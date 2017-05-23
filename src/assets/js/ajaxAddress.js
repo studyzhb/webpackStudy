@@ -6,6 +6,8 @@ module.exports={
     isHasBand:'/public/index.php/bondpc/bondpc/isHasBand',
     //支付宝充值
     rechargePayMoney:'/pay/rechargePay',
+    //查看订单详情
+    lookupOrderInfo:'/Userbalance/logInfo',
     user:{
         getPicCode:'/login/getcode',
         getLoginMessCode:'/login/code',

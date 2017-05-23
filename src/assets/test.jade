@@ -19,3 +19,23 @@ footer
                     - var footInfo=['©2017 e+.RIGHT','ICP备案号：豫ICP备15016705号-4',''];
                     each item in footInfo
                         a #{item}   
+
+
+
+        form#inputmoney-detail-info.layui-form(style="display: none;font-size: 12px;padding:20px 10px;")
+            .layui-form-item
+                label.layui-form-label 充值时间
+                .layui-input-inline
+                    input.layui-input(type="text",readonly=true)
+            .layui-form-item
+                label.layui-form-label 流水号
+                .layui-input-inline
+                    input.layui-input(type="text",readonly=true)
+            .layui-form-item
+                label.layui-form-label 充值金额
+                .layui-input-inline
+                    input.layui-input(type="text",readonly=true)
+            .layui-form-item
+                label.layui-form-label 充值状态
+                .layui-input-inline
+                    input.layui-input(type="text",value='成功',readonly=true)

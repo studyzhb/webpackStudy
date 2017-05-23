@@ -166,8 +166,8 @@ new Vue({
                
             }else if(this.checkType==2){
 
-                // this.getPayHtml(num);
-                layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
+                this.getPayHtml(num);
+                // layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
             }else{
                 layer.msg('暂不支持此种支付方式');
             }
