@@ -304,8 +304,9 @@ new Vue({
         },
         getMyRecommend:function(orderid){
             var self=this;
-            if(orderid){
-                this.$http.get(ajaxAddress.preFix+ajaxAddress.lookupOrderInfo+'?order_sn='+orderid)
+            console.log(orderid);
+            if(orderid!==undefined){
+                this.$http.get(ajaxAddress.preFix+ajaxAddress.lookupOrderInfo,{params:{order_sn:orderid}})
                     .then(function(res){
                         if(res.body.code==200){
                             self.orderObj=res.body.data.list;

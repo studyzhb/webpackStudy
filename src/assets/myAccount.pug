@@ -27,32 +27,32 @@ block centerContent
         form#pay-detail-info.layui-form(style="display: none;font-size: 12px;padding:20px 10px;")
             .layui-form-item
                 label.layui-form-label 名称
-                .layui-input-inline
-                    input.layui-input(type="text",:value="orderObj.type==3?'生活日用品商品包':'充值'",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",:value="orderObj.type==3?'生活日用品商品包':'充值'",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 订单号
-                .layui-input-inline
-                    input.layui-input(type="text",:value="orderObj.order_id",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",:value="orderObj.order_id",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 时间
-                .layui-input-inline
-                    input.layui-input(type="text",:value="filterTime(orderObj.time)",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",:value="filterTime(orderObj.time)",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 金额
-                .layui-input-inline
-                    input.layui-input(type="text",:value="orderObj.money",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",:value="orderObj.money",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 交易流水
-                .layui-input-inline
-                    input.layui-input(type="text",:value="orderObj.trade_no||''",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",:value="orderObj.trade_no||''",readonly,style="border:none;")
             .layui-form-item(style="display:none;",v-show="orderObj.type==3")
                 label.layui-form-label 使用代金券
-                .layui-input-inline
-                    input.layui-input(type="text",value="未使用代金券",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",value="未使用代金券",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 交易状态
-                .layui-input-inline
-                    input.layui-input(type="text",value="成功",readonly)
+                .layui-input-block
+                    input.layui-input(type="text",value="成功",readonly,style="border:none;")
         .my-baseInfo-wrapper
             .my-baseInfo-main
                 .show-all-balance-area
