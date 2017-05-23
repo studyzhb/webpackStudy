@@ -36,6 +36,11 @@ new Vue({
             var str=typeof eval(value)=='object'?JSON.parse(value)[0]:'';
             
             return str;
+        },
+        filterTime:function(value){
+            var str=new Date(value*1000).toLocaleDateString();
+            
+            return str;
         }
         
     },
@@ -48,6 +53,12 @@ new Vue({
 
     },
     methods:{
+        //解析时间
+        filterTime:function(value){
+            var str=new Date(value*1000).toLocaleDateString();
+            
+            return str;
+        },
         renderView:function(){
             var self=this;
             this.getQueueList();

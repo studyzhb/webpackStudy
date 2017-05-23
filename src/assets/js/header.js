@@ -429,6 +429,7 @@ var vm=new Vue({
 				this.loginUserName=userName;
 			}else{
 				this.isLogin=false;
+				this.loginIndex=0;
 			}
 		},
 		renderView:function(){
