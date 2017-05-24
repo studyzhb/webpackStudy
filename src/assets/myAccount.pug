@@ -32,15 +32,15 @@ block centerContent
             .layui-form-item
                 label.layui-form-label 订单号
                 .layui-input-block
-                    input.layui-input(type="text",:value="orderObj.order_id",readonly,style="border:none;")
+                    input.layui-input(type="text",:value="orderObj.order_id||0",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 时间
                 .layui-input-block
-                    input.layui-input(type="text",:value="filterTime(orderObj.time)",readonly,style="border:none;")
+                    input.layui-input(type="text",:value="orderObj.time?filterTime(orderObj.time):0",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 金额
                 .layui-input-block
-                    input.layui-input(type="text",:value="orderObj.money",readonly,style="border:none;")
+                    input.layui-input(type="text",:value="orderObj.money||0",readonly,style="border:none;")
             .layui-form-item
                 label.layui-form-label 交易流水
                 .layui-input-block

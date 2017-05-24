@@ -304,26 +304,28 @@ new Vue({
         },
         getMyRecommend:function(orderid){
             var self=this;
-            console.log(orderid);
+            
             if(orderid!==undefined){
                 this.$http.get(ajaxAddress.preFix+ajaxAddress.lookupOrderInfo,{params:{order_sn:orderid}})
                     .then(function(res){
                         if(res.body.code==200){
-                            self.orderObj=res.body.data.list;
-                            
+                            self.orderObj=res.body.data.list||{};
+                            layer.open({
+                                type:1,
+                                title:'详情',
+                                content: $('#pay-detail-info'), //这里content是一个DOM
+                                shade:[0.8,'#000'],
+                                area:['600px','500px'],
+                                maxmin: true,
+                                end:function(){
+                                    $('#pay-detail-info').hide();
+                                }
+                            })
+                        }else{
+                            self.orderObj={};
                         }
                     })
-                layer.open({
-                    type:1,
-                    title:'详情',
-                    content: $('#pay-detail-info'), //这里content是一个DOM
-                    shade:[0.8,'#000'],
-                    area:['600px','500px'],
-                    maxmin: true,
-                    end:function(){
-                        $('#pay-detail-info').hide();
-                    }
-                })
+                
             }
             
         }
