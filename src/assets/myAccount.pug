@@ -60,12 +60,12 @@ block centerContent
                     em(v-text="userOrderArr.balance||0")
                     .btn-normal(@click="outputMoney(userOrderArr)",style="background:#47A4EB;") 提现
                     .btn-normal(@click="rechargeMoney",style="background:#FE550D;margin-right:290px;") 充值
-                    span 债权金:
+                    span 返利积分:
                     em(v-text="userOrderArr.queue_income||0")
-                    .btn-big(@click="obligation2Balance") 债权金转余额
+                    .btn-big(@click="obligation2Balance") 积分兑换
                 .handle-balance-area(style="display:none;")
                     .biaozhi
-                    .btn-big(@click="obligation2Balance") 债权金转余额
+                    .btn-big(@click="obligation2Balance") 积分兑换
                     .btn-normal(@click="outputMoney(userOrderArr)")
                         img(src="../img/output.png")
                         | 提现

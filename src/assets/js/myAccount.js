@@ -100,7 +100,7 @@ new Vue({
             var self=this;
             layui.use(['form','layer'], function(){
                 var layer = layui.layer;
-                layer.confirm('确认执行此操作？',function(index){
+                layer.confirm('您确定要进行积分兑换吗？积分兑换完成后，请在余额查看。',{title:"积分兑换"},function(index){
                     layer.close(index);
                     self.$http.post(ajaxAddress.preFix+ajaxAddress.order.obligation2balance)
                         .then(function(res){
@@ -279,7 +279,7 @@ new Vue({
                 // layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
                 //biaozhi
                 
-
+                
                 //5.23
                 layer.prompt({
                     formType: 0,

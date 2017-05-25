@@ -15,7 +15,7 @@ const config={
     }, 
     output:{
         // publicPath:'',
-        filename:'[name]-bundle.1.1.0.js',
+        filename:'[name]-bundle.1.1.1.js',
         path:path.resolve(__dirname,'dist/js')    
     },
     module:{

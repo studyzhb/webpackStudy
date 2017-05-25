@@ -14,18 +14,18 @@ html(style="min-height:100%;overflow:auto;")
                 .approve-wrapper
                     .diaTop(style="position:absolute;top:10px;right:10px;",@click="closeAllAlertCon")
                         img(src="../img/delete.png")
-                    h2.title 请先进行债权认证
+                    h2.title 请先进行消费返利申请
                     .input-wrapper
-                        label 债权人姓名
+                        label 姓名
                         input(placeholder='请输入',:class="{'validate-color':!validatorApprove.name}",v-model="approveInfo.name",@blur="validatorApprove.name=/^\\S+/.test(approveInfo.name)")
                     .input-wrapper
-                        label 债权人电话
+                        label 电话
                         input(placeholder='请输入',:class="{'validate-color':!validatorApprove.tel}",v-model="approveInfo.tel",@blur="validatorApprove.tel=/^\\S+/.test(approveInfo.tel)")
                     .input-wrapper
-                        label 债权金额
+                        label 金额
                         input(placeholder='请输入',:class="{'validate-color':!validatorApprove.money}",v-model="approveInfo.money",@blur="validatorApprove.money=/^\\S+/.test(approveInfo.money)")
                     .input-wrapper
-                        label 债权编号
+                        label 编号
                         input(placeholder='如11-10-1-0001',:class="{'validate-color':!validatorApprove.debtcode}",v-model="approveInfo.debtcode",@blur="validatorApprove.debtcode=/^\\S+/.test(approveInfo.debtcode)")
                     .input-inline
                         .input-confrim-btn(@click="approveMoney") 确定
