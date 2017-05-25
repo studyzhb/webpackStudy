@@ -132,12 +132,46 @@ var vm=new Vue({
 	},
 	methods:{
 		gotoPersonCenter:function(){
+			
 			if(this.isLogin){
-				open('personCenter.html','_self');
+				layer.open({
+					content:"http://enclosure.wandlm.net/Other/wdnotice1.html",
+					area:['600px','400px'],
+					btn:['点击同意消费返利协议','拒绝'],
+					type:2,
+					title:'消费返利公告',
+					yes:function(index,layero){
+						layer.close(index);
+						open('personCenter.html','_self');
+						return false;
+					},
+					btn2:function(index,layero){
+						open('index.html','_self');
+						// return false;
+					}
+				})
+				
 			}else{
 				layer.msg('请先登录');
 				this.loginIndex='0'
 			}
+		},
+		openObligationBackMoney:function(){
+			layer.open({
+                content:"http://enclosure.wandlm.net/Other/wdnotice1.html",
+                area:['600px','400px'],
+                btn:['点击同意消费返利协议','拒绝'],
+                type:2,
+				title:'消费返利公告',
+				yes:function(index,layero){
+                    layer.close(index);
+                    return false;
+                },
+                btn2:function(index,layero){
+                    open('index.html','_self');
+                    return false;
+                }
+            })
 		},
 		//显示二维码
 		showLinkCode:function(){
@@ -453,7 +487,7 @@ var vm=new Vue({
 			var str = value + shopRecomendName;
 			
 			
-				return str;
+			return str;
 			
 		},
 		setNameGoods:function(value){
@@ -536,8 +570,23 @@ var vm=new Vue({
 							layer.msg('认证审核中....请耐心等待')
 						}
 						else{
+							layer.open({
+								content:"http://enclosure.wandlm.net/Other/wdnotice1.html",
+								area:['600px','400px'],
+								btn:['点击同意消费返利协议','拒绝'],
+								type:2,
+								title:'消费返利公告',
+								yes:function(index,layero){
+									layer.close(index);
+									self.loginIndex=5;
+									return false;
+								},
+								btn2:function(index,layero){
+									open('index.html','_self');
+									return false;
+								}
+							})
 							
-							self.loginIndex=5;
 						}
 						
 					}else{
