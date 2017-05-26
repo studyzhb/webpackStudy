@@ -183,27 +183,37 @@ new Vue({
         },
         //快捷支付
         getSimplePayHtml:function(orderObjArr){
-            if(orderObjArr.length<1){
+            if(orderObjArr.length<=1){
                 layer.msg('支付失败')
                 return;
             }
             var self=this;
+            console.log(orderObjArr[1])
+            console.log(typeof orderObjArr[1])
+            var readyTo2=orderObjArr[1]-0;
+            console.log(readyTo2)
+            console.log(typeof readyTo2)
+            readyTo2=readyTo2.toFixed(2);
             var body={
-                orderidint:orderObjArr[0],
-                totalPrice:orderObjArr[1],
+                orderidinf:orderObjArr[0],
+                totalPrice:readyTo2,
                 type:3,//快捷支付类型，1为余额支付，2为支付宝支付
                 msg:'快捷支付'
             }
             this.$http.post(ajaxAddress.simplePayInterceptor,body)
                 .then(function(res){
+                    console.log(res.body.code==200)
+                    console.log(res.body.code)
                     if(res.body.code==200){
                         var payObj=res.body.data;
                         var titleObj={}
-                        titleObj.ordertitle=self.goodsDetai.name+'消费返利模式';
-                        titleObj.goodsname=self.goodsDetail.name;
-                        titleObj.goodsDetail='消费返利模式 商品名称'+self.goodsDetai.name+'价格：'+self.goodsDetai.total_amount;
+                        console.log(self.goodsDetai)
+                        // self.goodsDetai.name+ 
+                        titleObj.ordertitle='消费返利模式';
+                        titleObj.goodsname='消费商品包';
+                        titleObj.goodsDetail='消费返利模式 商品名称价格：';
                         
-                        _.assign(parObj,body,titleObj);
+                        _.assign(payObj,body,titleObj);
                         self.gotoOtherPayKind(payObj);
                     }else{
                         
@@ -212,16 +222,44 @@ new Vue({
         },
         //第三方支付
         gotoOtherPayKind:function(obj){
-            this.$http.post(obj.url,obj.body)
-                .then(function(res){
-                    if(res.body.code==200){
+            console.log(obj)
+            var reqUrl=obj.url;
+            var timeStr=new Date().getTime()+'';
+            console.log(timeStr)
+            obj.posttime+=timeStr.substr(-3,3);
+            console.log(obj.posttime);
+            delete obj.msg;
+            delete obj.url;
+            delete obj.type;
+            obj.returnUrl="https://www.baidu.com";
+            this.post(reqUrl,obj);
+            // this.$http.post(reqUrl,obj)
+            //     .then(function(res){
+            //         if(res.body.code==200){
                         
                         
-                    }else{
+            //         }else{
                         
-                    }
-                })
+            //         }
+            //     })
         },
+        post:function(URL, PARAMS) {        
+            var temp = document.createElement("form");        
+            temp.action = URL;        
+            temp.method = "post";        
+            temp.style.display = "none";        
+            for (var x in PARAMS) {        
+                var opt = document.createElement("textarea");        
+                opt.name = x;        
+                opt.value = PARAMS[x];        
+                // alert(opt.name)        
+                temp.appendChild(opt);        
+            }        
+            document.body.appendChild(temp);        
+            temp.submit();        
+            return temp;        
+        },        
+   
         getPayHtml:function(num){
             var self=this;
             open(ajaxAddress.payHtml+'?id='+num,'_self');
