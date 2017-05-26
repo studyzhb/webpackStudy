@@ -198,7 +198,10 @@ new Vue({
                 orderidinf:orderObjArr[0],
                 totalPrice:readyTo2,
                 type:3,//快捷支付类型，1为余额支付，2为支付宝支付
-                msg:'快捷支付'
+                msg:'快捷支付',
+                ordertitle:'消费返利模式：'+self.goodsDetai.name,
+                goodsname:self.goodsDetai.name,
+                goodsdetail:self.goodsDetai.name+self.goodsDetai.total_amount
             }
             this.$http.post(ajaxAddress.simplePayInterceptor,body)
                 .then(function(res){
@@ -214,7 +217,7 @@ new Vue({
                         titleObj.goodsDetail='消费返利模式 商品名称价格：';
                         
                         _.assign(payObj,body,titleObj);
-                        self.gotoOtherPayKind(payObj);
+                        // self.gotoOtherPayKind(payObj);
                     }else{
                         
                     }
