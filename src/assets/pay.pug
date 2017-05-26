@@ -52,17 +52,24 @@ block content
             .payment-list.payment-list-0
               ul.clear-fix
                 li
-                  input#thirdpart_pay_wxqrpay(type="radio", @click="checkType=1", name="thirdpart_pay", data-type="wxqrpay", data-code="", data-bankcode="", checked="")
+                  input#thirdpart_pay_wxqrpay(type="radio", @click="checkType=1", name="", data-type="wxqrpay", data-code="", data-bankcode="", checked="")
                   |     							
                   label.payment-icon(for="thirdpart_pay_wxqrpay", @click="checkType=1") 余额支付
                   |     							
                   span.payment-weak-tip(style="visibility:visible;")
                 |     						
                 li
-                  input#thirdpart_pay_alipay(type="radio", @click="checkType=2", name="thirdpart_pay", data-type="alipay", data-code="", data-bankcode="")
+                  input#thirdpart_pay_alipay(type="radio", @click="checkType=2", name="", data-type="alipay", data-code="", data-bankcode="")
                   |     							
                   label.payment-icon(for="thirdpart_pay_alipay", @click="checkType=2")
                     img(src="../img/pay/alipaypcnew.png", disabled="", alt="支付宝")
+                  |     							
+                  span.payment-weak-tip(style="visibility:hidden;")
+                li(style="display:none;")
+                  input#thirdpart_pay_simple(type="radio", @click="checkType=3", name="", data-type="alipay", data-code="", data-bankcode="")
+                  |     							
+                  label.payment-icon(for="thirdpart_pay_simple", @click="checkType=3")
+                    img(src="../img/pay/alipaypcnew.png", disabled="", alt="快捷支付")
                   |     							
                   span.payment-weak-tip(style="visibility:hidden;")
           //

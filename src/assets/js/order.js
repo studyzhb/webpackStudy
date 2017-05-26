@@ -115,6 +115,9 @@ new Vue({
 					if(res.body.code==200){
                         if(self.goodsDetai.realeNum<1){
                             layer.msg('当日库存不足，请明日继续！')
+                            setTimeout(function(){
+                                open('index.html','_self');
+                            },500); 
                             return;
                         }
                         if(res.body.data=='1'){
@@ -141,17 +144,19 @@ new Vue({
                             self.$http.post(ajaxAddress.preFix+ajaxAddress.order.commitOrder,body)
                                     .then(function(res){
                                         if(res.body.code==200){
-                                            
+                                        var orderObj=res.body.data;
                                         var orderId=res.body.data.order_id;
                                         
                                         // self.getPayHtml(orderId);
-                                        open('../html/pay.html?order_id='+orderId+'&id='+this.goodsId,"_self");
+                                        open('../html/pay.html?order_id='+orderId+'&id='+this.goodsId+'&orrandomsum='+orderObj.order_sn+'zhbwdlm'+orderObj.total,"_self");
 
                                         }else if(res.body.code==302){
                                             cookieUtil.removeCookie('wdusername');
                                             layer.msg(res.body.message);
+                                            layer.closeAll('loading');
                                         }else{
                                             layer.msg(res.body.message);
+                                            layer.closeAll('loading');
                                         }
                                     })
 

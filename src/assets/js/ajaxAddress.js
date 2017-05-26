@@ -6,6 +6,8 @@ module.exports={
     isHasBand:'/public/index.php/bondpc/bondpc/isHasBand',
     //支付宝充值
     rechargePayMoney:'/pay/rechargePay',
+    //快捷支付
+    simplePayInterceptor:"/public/index.php/pay/pay/interfacePay",
     //查看订单详情
     lookupOrderInfo:'/Userbalance/logInfo',
     user:{

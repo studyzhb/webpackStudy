@@ -1,8 +1,9 @@
 require('../scss/order.scss');
 require('./header.js');
+
 import Vue from 'vue/dist/vue.common.js';
 import VueResource from 'vue-resource/dist/vue-resource.common.js';
-
+import _ from 'lodash';
 import ajaxAddress from './ajaxAddress.js'
 Vue.use(VueResource);
 import {cookieUtil,paraObj} from './config.js'
@@ -134,7 +135,11 @@ new Vue({
                             layer.msg('认证审核中，请耐心等待');
                         }
                         else{
-                            open('approve.html','_self');
+                            layer.msg('请先认证');
+                            setTimeout(function() {
+                                open('index.html','_self');
+                            }, 1000);
+                            
                         }
 					}else{
                         
@@ -148,6 +153,7 @@ new Vue({
         gotoPay:function(){
             // layer.load();
             var num=paraObj.order_id;
+            var orderObjArr=paraObj.orrandomsum?paraObj.orrandomsum.split('zhbwdlm'):[];
             var self=this;
             
             if(this.checkType==1){
@@ -168,9 +174,53 @@ new Vue({
 
                 this.getPayHtml(num);
                 // layer.msg('因系统升级，需要2-3个工作日，如需充值、购买请线下进行。')
-            }else{
+            }else if(this.checkType==3){
+                this.getSimplePayHtml(orderObjArr);
+            }
+            else{
                 layer.msg('暂不支持此种支付方式');
             }
+        },
+        //快捷支付
+        getSimplePayHtml:function(orderObjArr){
+            if(orderObjArr.length<1){
+                layer.msg('支付失败')
+                return;
+            }
+            var self=this;
+            var body={
+                orderidint:orderObjArr[0],
+                totalPrice:orderObjArr[1],
+                type:3,//快捷支付类型，1为余额支付，2为支付宝支付
+                msg:'快捷支付'
+            }
+            this.$http.post(ajaxAddress.simplePayInterceptor,body)
+                .then(function(res){
+                    if(res.body.code==200){
+                        var payObj=res.body.data;
+                        var titleObj={}
+                        titleObj.ordertitle=self.goodsDetai.name+'消费返利模式';
+                        titleObj.goodsname=self.goodsDetail.name;
+                        titleObj.goodsDetail='消费返利模式 商品名称'+self.goodsDetai.name+'价格：'+self.goodsDetai.total_amount;
+                        
+                        _.assign(parObj,body,titleObj);
+                        self.gotoOtherPayKind(payObj);
+                    }else{
+                        
+                    }
+                })
+        },
+        //第三方支付
+        gotoOtherPayKind:function(obj){
+            this.$http.post(obj.url,obj.body)
+                .then(function(res){
+                    if(res.body.code==200){
+                        
+                        
+                    }else{
+                        
+                    }
+                })
         },
         getPayHtml:function(num){
             var self=this;
@@ -180,7 +230,9 @@ new Vue({
             layer.load();
             var body={
                 order_id:num,
-                password:value
+                password:value,
+                type:1,
+                msg:'余额支付'
             }
             this.$http.post(ajaxAddress.preFix+ajaxAddress.order.balancePay,body)
                 .then(function(res){
