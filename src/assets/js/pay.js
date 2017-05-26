@@ -203,25 +203,28 @@ new Vue({
                 goodsname:self.goodsDetai.name,
                 goodsdetail:self.goodsDetai.name+self.goodsDetai.total_amount
             }
-            this.$http.post(ajaxAddress.simplePayInterceptor,body)
-                .then(function(res){
-                    console.log(res.body.code==200)
-                    console.log(res.body.code)
-                    if(res.body.code==200){
-                        var payObj=res.body.data;
-                        var titleObj={}
-                        console.log(self.goodsDetai)
-                        // self.goodsDetai.name+ 
-                        titleObj.ordertitle='消费返利模式';
-                        titleObj.goodsname='消费商品包';
-                        titleObj.goodsDetail='消费返利模式 商品名称价格：';
+            
+            open(ajaxAddress.simplePayInterceptor+'?orderidinf='+orderObjArr[0]+'&totalPrice='+readyTo2+'&type=3&msg=快捷支付&ordertitle=消费返利模式：'+self.goodsDetai.name+'&goodsname='+self.goodsDetai.name+'&goodsdetail='+self.goodsDetai.name+self.goodsDetai.total_amount,'blank');
+
+            // this.$http.post(ajaxAddress.simplePayInterceptor,body)
+            //     .then(function(res){
+            //         console.log(res.body.code==200)
+            //         console.log(res.body.code)
+            //         if(res.body.code==200){
+            //             var payObj=res.body.data;
+            //             var titleObj={}
+            //             console.log(self.goodsDetai)
+            //             // self.goodsDetai.name+ 
+            //             titleObj.ordertitle='消费返利模式';
+            //             titleObj.goodsname='消费商品包';
+            //             titleObj.goodsDetail='消费返利模式 商品名称价格：';
                         
-                        _.assign(payObj,body,titleObj);
-                        // self.gotoOtherPayKind(payObj);
-                    }else{
+            //             _.assign(payObj,body,titleObj);
+            //             // self.gotoOtherPayKind(payObj);
+            //         }else{
                         
-                    }
-                })
+            //         }
+            //     })
         },
         //第三方支付
         gotoOtherPayKind:function(obj){

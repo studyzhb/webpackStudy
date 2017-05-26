@@ -11,7 +11,8 @@ const config={
         obligationlist:'./src/assets/js/obligationlist.js',
         obligationlisting:'./src/assets/js/obligationlisting.js',
         banklist:'./src/assets/js/banklist.js',
-        discountOrder:'./src/assets/js/discountOrder.js'
+        discountOrder:'./src/assets/js/discountOrder.js',
+        thirdpay:'./src/assets/js/thirdpay.js'
     }, 
     output:{
         // publicPath:'',
@@ -103,6 +104,13 @@ const config={
             filename:'../html/discountOrder.html',
             template:'src/assets/discountOrder.pug',
             chunks:['discountOrder'],
+            title:'ceshi',
+            minify:false
+        }),
+        new HtmlWebpackPlugin({
+            filename:'../html/thirdpay.html',
+            template:'src/assets/thirdpay.pug',
+            chunks:['thirdpay'],
             title:'ceshi',
             minify:false
         })
