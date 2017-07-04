@@ -73,6 +73,13 @@ block content
                     img(src="../img/pay/pay3.png", disabled="", alt="快捷支付")
                   |     							
                   span.payment-weak-tip(style="visibility:hidden;")
+                li(style="display:none;")
+                  input#thirdpart_pay_sdsimple(type="radio", @click="checkType=4", name="paytype", data-type="alipay", data-code="", data-bankcode="")
+                  |     							
+                  label.payment-icon(for="thirdpart_pay_sdsimple", @click="checkType=4")
+                    img(src="../img/pay/pay4.png", disabled="", alt="杉德快捷支付")
+                  |     							
+                  span.payment-weak-tip(style="visibility:hidden;")
           //
             <span class="qr">
             <div class="qr-text"><span>手机版</span>扫码支付<br><a  target="_blank">点我下载手机版</a></div>

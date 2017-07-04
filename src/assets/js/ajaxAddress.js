@@ -8,6 +8,7 @@ module.exports={
     rechargePayMoney:'/pay/rechargePay',
     //快捷支付
     simplePayInterceptor:"/public/index.php/pay/pay/interfacePay",
+    simpleSDPayInterceptor:'/public/index.php/bondpc/pay/askSand',
     //查看订单详情
     lookupOrderInfo:'/Userbalance/logInfo',
     user:{
